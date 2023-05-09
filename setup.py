@@ -1,5 +1,5 @@
-#!/usr/bin/python3
-from setuptools import setup
+#!/usr/bin/env python3
+from setuptools import find_packages, setup
 import io
 import os
 
@@ -27,7 +27,7 @@ with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 # Load the package's __version__.py
 about = {}
 if not VERSION:
-    with open(os.path.join(here, NAME, '__version__.py')) as f:
+    with open(os.path.join(here, 'src', NAME, '__version__.py')) as f:
         exec(f.read(), about)
 else:
     about['__version__'] = VERSION
@@ -42,7 +42,8 @@ setup(
     author_email=EMAIL,
     python_requires=REQUIRES_PYTHON,
     url=URL,
-    packages=['twint', 'twint.storage'],
+    package_dir={'': 'src'},
+    packages=find_packages(where='src'),
     entry_points={
         'console_scripts': [
             'twint = twint.cli:run_as_command',
