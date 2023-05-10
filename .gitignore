@@ -12,7 +12,6 @@ twint/storage/mysql.py
 # Node Dependency directories
 node_modules/
 jspm_packages/
-tests/
 # Distribution / packaging
 .Python
 env/
@@ -110,9 +109,5 @@ ENV/
 # mypy
 .mypy_cache/
 
-# output
-*.csv
-*.json
-*.txt
-
-test_twint.py
+# Testing files
+/test_twint.*

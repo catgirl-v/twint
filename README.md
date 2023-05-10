@@ -24,7 +24,7 @@ This problem doesn't happen recently.
 
 The fix is **not complete**.
 `twint.run.Profile` will work but `twint.run.db` will not.
-This means [`test.py`](./test.py) causes an error.
+This means [`tests/test_all.py`](./tests/test_all.py) causes an error.
 
 I think this is because the fields of the result table are not exactly the same as the traditional ones.
 
@@ -32,7 +32,7 @@ I think this is because the fields of the result table are not exactly the same 
 
 - [twintproject/twint#1335](https://github.com/twintproject/twint/issues/1335)
 
-### [-] TWINT requires Python version 3.6+.
+### [-] TWINT requires Python version 3.8+.
 
 #### Related
 
@@ -57,7 +57,7 @@ This repository is also under the [MIT License](https://opensource.org/licenses/
 ![2](https://i.imgur.com/iaH3s7z.png)
 ![3](https://i.imgur.com/hVeCrqL.png)
 
-[![PyPI](https://img.shields.io/pypi/v/twint.svg)](https://pypi.org/project/twint/) [![Build Status](https://travis-ci.org/twintproject/twint.svg?branch=master)](https://travis-ci.org/twintproject/twint) [![Python 3.6|3.7|3.8](https://img.shields.io/badge/Python-3.6%2F3.7%2F3.8-blue.svg)](https://www.python.org/download/releases/3.0/) [![GitHub license](https://img.shields.io/github/license/haccer/tweep.svg)](https://github.com/haccer/tweep/blob/master/LICENSE) [![Downloads](https://pepy.tech/badge/twint)](https://pepy.tech/project/twint) [![Downloads](https://pepy.tech/badge/twint/week)](https://pepy.tech/project/twint/week) [![Patreon](https://img.shields.io/endpoint.svg?url=https:%2F%2Fshieldsio-patreon.herokuapp.com%2Ftwintproject)](https://www.patreon.com/twintproject) ![](https://img.shields.io/twitter/follow/noneprivacy.svg?label=Follow&style=social) 
+[![PyPI](https://img.shields.io/pypi/v/twint.svg)](https://pypi.org/project/twint/) [![Build Status](https://travis-ci.org/twintproject/twint.svg?branch=master)](https://travis-ci.org/twintproject/twint) [![Python 3.8/3.9/3.10](https://img.shields.io/badge/Python-3.8%2F3.9%2F3.10-blue.svg)](https://www.python.org/download/releases/3.0/) [![GitHub license](https://img.shields.io/github/license/haccer/tweep.svg)](https://github.com/haccer/tweep/blob/master/LICENSE) [![Downloads](https://pepy.tech/badge/twint)](https://pepy.tech/project/twint) [![Downloads](https://pepy.tech/badge/twint/week)](https://pepy.tech/project/twint/week) [![Patreon](https://img.shields.io/endpoint.svg?url=https:%2F%2Fshieldsio-patreon.herokuapp.com%2Ftwintproject)](https://www.patreon.com/twintproject) ![](https://img.shields.io/twitter/follow/noneprivacy.svg?label=Follow&style=social) 
 
 >No authentication. No API. No limits.
 
@@ -76,22 +76,6 @@ Some of the benefits of using Twint vs Twitter API:
 
 ## Limits imposed by Twitter
 Twitter limits scrolls while browsing the user timeline. This means that with `.Profile` or with `.Favorites` you will be able to get ~3200 tweets.
-
-## Requirements
-- Python 3.6;
-- aiohttp;
-- aiodns;
-- beautifulsoup4;
-- cchardet;
-- dataclasses
-- elasticsearch;
-- pysocks;
-- pandas (>=0.23.0);
-- aiohttp_socks;
-- schedule;
-- geopy;
-- fake-useragent;
-- py-googletransx.
 
 ## Installing
 

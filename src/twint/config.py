@@ -28,6 +28,8 @@ class Config:
     Count: Optional[int] = None
     Stats: bool = False
     Database: object = None
+    Database_close: bool = False
+    Database_commit: bool = False
     To: str = None
     All = None
     Debug: bool = False

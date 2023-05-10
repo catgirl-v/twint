@@ -10,7 +10,7 @@ Copyright (c) 2018 Cody Zacharias
 import logging, os
 
 from .config import Config
-from .__version__ import __version__
+from .__about__ import __version__
 from . import run
 
 _levels = {

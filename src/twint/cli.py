@@ -337,8 +337,9 @@ def main():
 
 
 def run_as_command():
-    if(sys.version_info.major < 3 or (sys.version_info.major == 3 and sys.version_info.minor < 6)):
-        print("[-] TWINT requires Python version 3.6+.")
+    # TODO(bb010g): Move to twint.__about__
+    if(sys.version_info.major < 3 or (sys.version_info.major == 3 and sys.version_info.minor < 9)):
+        print("[-] TWINT requires Python version 3.8+.")
         sys.exit(0)
 
     main()

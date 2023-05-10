@@ -1,0 +1,205 @@
+[build-system]
+requires = ["hatchling~=1.8"]
+build-backend = "hatchling.build"
+
+[project]
+name = "twint"
+dynamic = ["version"]
+description = "An advanced Twitter scraping & OSINT tool."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8.0"
+authors = [
+  { name = "Cody Zacharias", email = "codyzacharias@pm.me" },
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  # "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = [
+  "aiodns~=3.0",
+  "aiohttp~=3.8",
+  "aiohttp_socks~=0.8.0",
+  "beautifulsoup4~=4.10",
+  "cchardet~=2.1",
+  "dataclasses~=0.6.0",
+  "elasticsearch~=8.1",
+  "fake-useragent~=0.1",
+  "geopy~=2.2",
+  "googletransx~=2.4",
+  "pandas~=1.4",
+  "pysocks~=1.7",
+  "schedule~=1.1",
+]
+
+[project.scripts]
+twint = "twint.cli:run_as_command"
+
+[project.urls]
+Documentation = "https://github.com/woluxwolu/twint#readme"
+Homepage = "https://github.com/woluxwolu/twint"
+Issues = "https://github.com/woluxwolu/twint/issues"
+Source = "https://github.com/woluxwolu/twint"
+
+[tool.hatch.version]
+source = "regex"
+path = "src/twint/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/.github",
+  "/Dockerfile",
+  "/elasticsearch",
+  "/scripts",
+]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src"]
+sources = ["src"]
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10"]
+
+[tool.hatch.envs.packaging]
+detached = true
+dependencies = [
+  "pipgrip~=0.10",
+]
+[tool.hatch.envs.packaging.scripts]
+dos2unix = "python -- {root}{/}scripts{/}dos2unix.py {args}"
+fix-lock = []
+# lock = ["pipgrip -v --sort --lock-file=requirements.txt {args:.}", "fix-lock"]
+lock = ["pipgrip -v --sort --lock {args:.}", "fix-lock", "mv pipgrip.lock requirements.txt"]
+tree = "pipgrip -v --sort --tree {args:.}"
+[tool.hatch.envs.packaging.overrides]
+platform.windows.scripts = [
+  { key = "fix-lock", value = "dos2unix pipgrip.lock pipgrip.lock" },
+  { key = "mv", value = "move {args}" },
+]
+[[tool.hatch.envs.packaging.matrix]]
+python = ["3.8"]
+
+[tool.hatch.envs.lint]
+detached = true
+dependencies = [
+  "black>=23.1.0",
+  "mypy>=1.0.0",
+  "ruff>=0.0.243",
+]
+[tool.hatch.envs.lint.scripts]
+typing = "mypy --install-types --non-interactive {args:src/twint tests}"
+style = [
+  "ruff {args:.}",
+  "black --check --diff {args:.}",
+]
+fmt = [
+  "black {args:.}",
+  "ruff --fix {args:.}",
+  "style",
+]
+all = [
+  "style",
+  "typing",
+]
+
+[tool.black]
+target-version = ["py39"]
+line-length = 120
+skip-string-normalization = true
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+select = [
+  "A",
+  "ARG",
+  "B",
+  "C",
+  "DTZ",
+  "E",
+  "EM",
+  "F",
+  "FBT",
+  "I",
+  "ICN",
+  "ISC",
+  "N",
+  "PLC",
+  "PLE",
+  "PLR",
+  "PLW",
+  "Q",
+  "RUF",
+  "S",
+  "T",
+  "TID",
+  "UP",
+  "W",
+  "YTT",
+]
+ignore = [
+  # Allow non-abstract empty methods in abstract base classes
+  "B027",
+  # Allow boolean positional values in function calls, like `dict.get(... True)`
+  "FBT003",
+  # Ignore checks for possible passwords
+  "S105", "S106", "S107",
+  # Ignore complexity
+  "C901", "PLR0911", "PLR0912", "PLR0913", "PLR0915",
+]
+unfixable = [
+  # Don't touch unused imports
+  "F401",
+]
+
+[tool.ruff.isort]
+known-first-party = ["twint"]
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.per-file-ignores]
+# Tests can use magic values, assertions, and relative imports
+"tests/**/*" = ["PLR2004", "S101", "TID252"]
+
+[tool.coverage.run]
+source_pkgs = ["twint", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/twint/__about__.py",
+]
+
+[tool.coverage.paths]
+twint = ["src/twint", "*/twint/src/twint"]
+tests = ["tests", "*/twint/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]

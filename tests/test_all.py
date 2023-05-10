@@ -2,45 +2,47 @@ import twint
 import os
 
 '''
-Test.py - Testing TWINT to make sure everything works.
+test_all.py - Testing TWINT to make sure everything works.
 '''
 
 
-def test_reg(c, run):
+def _test_reg(c, run):
     print("[+] Beginning vanilla test in {}".format(str(run)))
     run(c)
 
 
-def test_db(c, run):
+def _test_db(c, run):
     print("[+] Beginning DB test in {}".format(str(run)))
     c.Database = "test_twint.db"
+    c.Database_close = True
+    c.Database_commit = True
     run(c)
 
 
-def custom(c, run, _type):
+def _test_custom(c, run, _type):
     print("[+] Beginning custom {} test in {}".format(_type, str(run)))
     c.Custom['tweet'] = ["id", "username"]
     c.Custom['user'] = ["id", "username"]
     run(c)
 
 
-def test_json(c, run):
+def _test_json(c, run):
     c.Store_json = True
     c.Output = "test_twint.json"
-    custom(c, run, "JSON")
+    _test_custom(c, run, "JSON")
     print("[+] Beginning JSON test in {}".format(str(run)))
     run(c)
 
 
-def test_csv(c, run):
+def _test_csv(c, run):
     c.Store_csv = True
     c.Output = "test_twint.csv"
-    custom(c, run, "CSV")
+    _test_custom(c, run, "CSV")
     print("[+] Beginning CSV test in {}".format(str(run)))
     run(c)
 
 
-def main():
+def test_all():
     c = twint.Config()
     c.Username = "verified"
     c.Limit = 20
@@ -62,7 +64,7 @@ def main():
         twint.run.Favorites,
     ]
 
-    tests = [test_reg, test_json, test_csv, test_db]
+    tests = [_test_reg, _test_json, _test_csv, _test_db]
 
     # Something breaks if we don't split these up
 
@@ -86,6 +88,10 @@ def main():
         os.remove(_file)
 
     print("[+] Testing complete!")
+
+
+def main():
+    test_all()
 
 
 if __name__ == '__main__':

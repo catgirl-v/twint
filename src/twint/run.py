@@ -231,7 +231,15 @@ class Twint:
         if callback:
             task.add_done_callback(callback)
 
-        await task
+        try:
+            await task
+        finally:
+            try:
+                if self.config.Database_commit:
+                    self.conn.commit()
+            finally:
+                if self.config.Database_close:
+                    self.conn.close()
 
     async def run(self):
         if self.config.TwitterSearch:
@@ -325,7 +333,8 @@ def run(config, callback=None):
             __name__ + ':run:Unexpected exception occurred while attempting to get or create a new event loop.')
         raise
 
-    get_event_loop().run_until_complete(Twint(config).main(callback))
+    tw = Twint(config)
+    get_event_loop().run_until_complete(tw.main(callback))
 
 
 def Favorites(config):
@@ -379,7 +388,7 @@ def Lookup(config):
     config.Profile = False
     config.Lookup = True
     config.Favorites = False
-    config.FOllowing = False
+    config.Following = False
     config.Followers = False
     config.TwitterSearch = False
     run(config)
