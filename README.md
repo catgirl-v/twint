@@ -1,10 +1,10 @@
-20220207.0
+minamotorin: 20220207.0
 
 # About this fork
 
-[This repository](https://github.com/minamotorin/twint) is the fork of [https://github.com/twintproject/twint](https://github.com/twintproject/twint) and for myself.
+[This repository](https://github.com/woluxwolu/twint) is a fork of the inactive <https://github.com/twintproject/twint>.
 
-Modified by [minamotorin](https://github.com/minamotorin).
+Modified by [minamotorin](https://github.com/minamotorin) and other collaborators.
 
 ## Updates from twintproject/twint
 
@@ -57,7 +57,7 @@ This repository is also under the [MIT License](https://opensource.org/licenses/
 ![2](https://i.imgur.com/iaH3s7z.png)
 ![3](https://i.imgur.com/hVeCrqL.png)
 
-[![PyPI](https://img.shields.io/pypi/v/twint.svg)](https://pypi.org/project/twint/) [![Build Status](https://travis-ci.org/twintproject/twint.svg?branch=master)](https://travis-ci.org/twintproject/twint) [![Python 3.8/3.9/3.10](https://img.shields.io/badge/Python-3.8%2F3.9%2F3.10-blue.svg)](https://www.python.org/download/releases/3.0/) [![GitHub license](https://img.shields.io/github/license/haccer/tweep.svg)](https://github.com/haccer/tweep/blob/master/LICENSE) [![Downloads](https://pepy.tech/badge/twint)](https://pepy.tech/project/twint) [![Downloads](https://pepy.tech/badge/twint/week)](https://pepy.tech/project/twint/week) [![Patreon](https://img.shields.io/endpoint.svg?url=https:%2F%2Fshieldsio-patreon.herokuapp.com%2Ftwintproject)](https://www.patreon.com/twintproject) ![](https://img.shields.io/twitter/follow/noneprivacy.svg?label=Follow&style=social) 
+[![PyPI](https://img.shields.io/pypi/v/twint.svg)](https://pypi.org/project/twint/) [![Build Status](https://travis-ci.org/woluxwolu/twint.svg?branch=master)](https://travis-ci.org/woluxwolu/twint) [![Python 3.8/3.9/3.10/3.11](https://img.shields.io/badge/Python-3.8%2F3.9%2F3.10%2F3.11-blue.svg)](https://www.python.org/downloads/) [![GitHub license](https://img.shields.io/github/license/woluxwolu/twint.svg)](https://github.com/woluxwolu/twint/blob/master/LICENSE) [![Downloads](https://pepy.tech/badge/twint)](https://pepy.tech/project/twint) [![Downloads](https://pepy.tech/badge/twint/week)](https://pepy.tech/project/twint/week) [![Patreon](https://img.shields.io/endpoint.svg?url=https:%2F%2Fshieldsio-patreon.herokuapp.com%2Ftwintproject)](https://www.patreon.com/twintproject) [![Twitter](https://img.shields.io/twitter/follow/noneprivacy.svg?label=Follow&style=social)](https://twitter.com/noneprivacy)
 
 >No authentication. No API. No limits.
 
