@@ -57,7 +57,7 @@ This repository is also under the [MIT License](https://opensource.org/licenses/
 ![2](https://i.imgur.com/iaH3s7z.png)
 ![3](https://i.imgur.com/hVeCrqL.png)
 
-[![PyPI](https://img.shields.io/pypi/v/twint.svg)](https://pypi.org/project/twint/) [![Build Status](https://travis-ci.org/woluxwolu/twint.svg?branch=master)](https://travis-ci.org/woluxwolu/twint) [![Python 3.8/3.9/3.10/3.11](https://img.shields.io/badge/Python-3.8%2F3.9%2F3.10%2F3.11-blue.svg)](https://www.python.org/downloads/) [![GitHub license](https://img.shields.io/github/license/woluxwolu/twint.svg)](https://github.com/woluxwolu/twint/blob/master/LICENSE) [![Downloads](https://pepy.tech/badge/twint)](https://pepy.tech/project/twint) [![Downloads](https://pepy.tech/badge/twint/week)](https://pepy.tech/project/twint/week) [![Patreon](https://img.shields.io/endpoint.svg?url=https:%2F%2Fshieldsio-patreon.herokuapp.com%2Ftwintproject)](https://www.patreon.com/twintproject) [![Twitter](https://img.shields.io/twitter/follow/noneprivacy.svg?label=Follow&style=social)](https://twitter.com/noneprivacy)
+[![PyPI](https://img.shields.io/pypi/v/twint.svg)](https://pypi.org/project/twint/) [![Python 3.8/3.9/3.10/3.11](https://img.shields.io/badge/Python-3.8%2F3.9%2F3.10%2F3.11-blue.svg)](https://www.python.org/downloads/) [![GitHub license](https://img.shields.io/github/license/woluxwolu/twint.svg)](https://github.com/woluxwolu/twint/blob/master/LICENSE) [![Downloads](https://pepy.tech/badge/twint)](https://pepy.tech/project/twint) [![Downloads](https://pepy.tech/badge/twint/week)](https://pepy.tech/project/twint/week) [![Patreon](https://img.shields.io/endpoint.svg?url=https:%2F%2Fshieldsio-patreon.herokuapp.com%2Ftwintproject)](https://www.patreon.com/twintproject) [![Twitter](https://img.shields.io/twitter/follow/noneprivacy.svg?label=Follow&style=social)](https://twitter.com/noneprivacy)
 
 >No authentication. No API. No limits.
 
@@ -83,7 +83,8 @@ Twitter limits scrolls while browsing the user timeline. This means that with `.
 ```bash
 git clone --depth=1 https://github.com/twintproject/twint.git
 cd twint
-pip3 install . -r requirements.txt
+# replace 3.8 with your Python version
+pip3.8 install -r py3.8-requirements.txt -e .
 ```
 
 **Pip:**
